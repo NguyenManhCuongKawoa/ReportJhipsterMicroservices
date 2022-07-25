@@ -1,0 +1,88 @@
+
+entity JUser {
+	id Long required unique,
+    login String required minlength(1) maxlength(50) unique,
+    password String required minlength(60) maxlength(60),
+    firstName String maxlength(50), 
+    lastName String maxlength(50),
+    email String required minlength(5) maxlength(254) unique,
+    imageUrl String maxlength(256),
+    activated Boolean required,
+    langKey String minlength(2) maxlength(10),
+    activationKey String maxlength(20),
+    resetKey String maxlength(20),
+    createdBy String required,
+    createdDate LocalDate, 
+    resetDate LocalDate,
+    lastModifiedBy String,
+    lastModifiedDate LocalDate
+}
+
+entity JAuthority {
+	name String required maxlength(50) unique
+}
+
+entity UserAuthority {
+	userId Long required,
+    autorityName String required
+}
+
+entity Post {
+	id Long required unique,
+    title String, 
+    description String, 
+    content String required,
+    totalEmotion Integer,
+    totalShare Integer,
+    createdAt LocalDate required, 
+    updatedAt LocalDate,
+    userId Long required
+}
+
+entity PostImage {
+	id Long required unique,
+    postId Long required,
+    image String required
+}
+
+entity Hashtag {
+	id Long required unique,
+    name String required maxlength(256),
+    icon String,
+    createdAt LocalDate required
+}
+
+entity PostHashtag {
+	id Long required,
+    postId Long required,
+    hashtagId Long required
+}
+
+entity UserHashtag {
+	id Long required,
+    userId Long required,
+    hashtagId Long required
+}
+
+entity Emotion {
+	id Long required unique,
+	name String required maxlength(256),
+	icon String required
+}
+
+entity PostEmotion {
+	id Long required,
+    userId Long required,
+    postId Long required,
+    emotionId Long required
+}
+
+// Set pagination options
+paginate Post with infinite-scroll
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
