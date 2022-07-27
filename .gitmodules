@@ -1,0 +1,9 @@
+[submodule "cms_social_link"]
+	path = cms_social_link
+	url = https://github.com/NguyenManhCuongKawoa/ReportJhipsterMicroservices_CMS
+[submodule "backend_social_link"]
+	path = backend_social_link
+	url = https://github.com/NguyenManhCuongKawoa/ReportJhipsterMicroservices_backend
+[submodule "gateway_social_link"]
+	path = gateway_social_link
+	url = https://github.com/NguyenManhCuongKawoa/ReportJhipsterMicroservices_gateway
